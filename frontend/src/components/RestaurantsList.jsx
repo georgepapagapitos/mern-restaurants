@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const RestaurantsList = props => {
 
-  const [restaurants, setRestaurants] = useState("");
+  const [restaurants, setRestaurants] = useState([]);
   const [searchName, setSearchName] = useState("");
   const [searchZip, setSearchZip] = useState("");
   const [searchCuisine, setSearchCuisine] = useState("");
@@ -153,10 +153,16 @@ const RestaurantsList = props => {
                     <strong>Cuisine: </strong>{restaurant.cuisine}<br />
                     <strong>Address: </strong>{address}
                   </p>
+                  <div className="row">
+                    <Link to={'/restaurants/' + restaurant._id} className="btn  btn-primary col-lg-5 mx-1 mb-1">
+                      View Reviews
+                    </Link>
+                    <a target="_blank" href={"https://google.com/maps/place/" + address} className="btn btn-primary col-lg-5 mx-1 mb-1">View Map</a>
+                  </div>
                 </div>
               </div>
             </div>
-          )
+          );
         })}
       </div>
     </div>
